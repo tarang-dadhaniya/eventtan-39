@@ -1315,17 +1315,17 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 class="bg-white rounded shadow-md border border-[#E9E9E9]"
               >
                 <!-- Selected Features Tabs - Only Show If Features Are Selected -->
-                <div *ngIf="activeFeatures.length > 0" class="border-b border-[#CED4DA]">
-                  <div class="flex items-center gap-0 px-8 pt-0">
+                <div *ngIf="activeFeatures.length > 0" class="px-8 py-6 border-b border-[#CED4DA] bg-white">
+                  <div class="flex items-center gap-3 flex-wrap">
                     <button
-                      *ngFor="let featureId of activeFeatures; let i = index; let isLast = last"
+                      *ngFor="let featureId of activeFeatures; let i = index"
                       [class.active-feature-tab]="i === selectedFeatureIndex"
                       (click)="selectedFeatureIndex = i"
-                      class="relative flex items-center gap-3 px-6 py-4 bg-white border-b-2 transition-all font-medium"
+                      class="flex items-center gap-2 px-4 py-2.5 rounded border transition-all font-medium text-sm md:text-base"
                       [ngClass]="{
-                        'border-[#009FD8] text-[#009FD8] bg-[#F0F7FB]':
+                        'bg-[#009FD8] text-white border-[#009FD8] shadow-md':
                           i === selectedFeatureIndex,
-                        'border-transparent text-[#686868] hover:text-[#049AD0] hover:bg-gray-50':
+                        'bg-white text-[#686868] border-[#CED4DA] hover:border-[#049AD0] hover:text-[#049AD0]':
                           i !== selectedFeatureIndex,
                       }"
                     >
@@ -1333,7 +1333,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                         [innerHTML]="getFeatureTabIcon(featureId, i)"
                         class="w-5 h-5 flex items-center justify-center flex-shrink-0"
                       ></div>
-                      <span class="text-sm md:text-base whitespace-nowrap">
+                      <span class="whitespace-nowrap">
                         {{ getFeatureLabel(featureId) }}
                       </span>
                     </button>
