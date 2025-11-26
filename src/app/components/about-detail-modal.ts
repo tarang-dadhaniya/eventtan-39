@@ -290,6 +290,8 @@ import { FormsModule } from "@angular/forms";
 })
 export class AboutDetailModalComponent {
   @Input() isOpen = false;
+  @Input() initialTitle: string = "";
+  @Input() initialDescription: string = "";
   @Output() close = new EventEmitter<void>();
   @Output() save = new EventEmitter<any>();
 
@@ -297,6 +299,23 @@ export class AboutDetailModalComponent {
     title: "",
     description: "",
   };
+
+  ngOnInit() {
+    this.loadInitialData();
+  }
+
+  ngOnChanges() {
+    if (this.isOpen) {
+      this.loadInitialData();
+    }
+  }
+
+  private loadInitialData() {
+    this.formData = {
+      title: this.initialTitle || "",
+      description: this.initialDescription || "",
+    };
+  }
 
   onCancel() {
     this.close.emit();
