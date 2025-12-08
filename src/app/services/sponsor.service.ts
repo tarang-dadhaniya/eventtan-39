@@ -10,6 +10,7 @@ export interface Sponsor {
   track: string;
   sequence: number;
   companyLogo?: string;
+  documentNames?: string[];
 }
 
 @Injectable({
