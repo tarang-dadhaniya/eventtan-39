@@ -110,7 +110,7 @@ import { FormsModule } from "@angular/forms";
                 <button
                   type="button"
                   (click)="logoInput.click()"
-                  class="absolute bottom-0 right-0 w-12 h-12 rounded-full bg-[#009FD8] flex items-center justify-center shadow-md hover:bg-[#0385b5] transition-colors"
+                  class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#009FD8] flex items-center justify-center shadow-md hover:bg-[#0385b5] transition-colors"
                 >
                   <svg
                     width="20"
