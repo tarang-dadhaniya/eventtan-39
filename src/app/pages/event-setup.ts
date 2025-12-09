@@ -15,6 +15,7 @@ import { ConfirmDeleteModalComponent } from "../components/confirm-delete-modal"
 import { AboutDetailModalComponent } from "../components/about-detail-modal";
 import { AddInformationModalComponent } from "../components/add-information-modal";
 import { AddSponsorsModalComponent } from "../components/add-sponsors-modal";
+import { AddSocialMediaModalComponent } from "../components/add-social-media-modal";
 import { ScheduleService, Schedule } from "../services/schedule.service";
 import { ExhibitorService, Exhibitor } from "../services/exhibitor.service";
 import { SpeakerService, Speaker } from "../services/speaker.service";
@@ -44,6 +45,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
     AboutDetailModalComponent,
     AddInformationModalComponent,
     AddSponsorsModalComponent,
+    AddSocialMediaModalComponent,
   ],
   template: `
     <div class="flex h-screen overflow-hidden bg-main-bg">
@@ -2829,6 +2831,7 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
 
                             <!-- Add Social Media Button -->
                             <button
+                              (click)="openAddSocialMediaModal()"
                               class="flex items-center gap-2 px-4 h-11 border border-[#049AD0] rounded font-semibold text-sm text-white bg-[#009FD8] hover:bg-[#0385b5] transition-colors whitespace-nowrap"
                             >
                               <svg
@@ -3112,6 +3115,13 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
       (close)="closeSponsorsModal()"
       (submit)="onSponsorSave($event)"
     ></app-add-sponsors-modal>
+
+    <!-- Add Social Media Modal -->
+    <app-add-social-media-modal
+      [isOpen]="isSocialMediaModalOpen"
+      (close)="closeSocialMediaModal()"
+      (submit)="onSocialMediaSave($event)"
+    ></app-add-social-media-modal>
   `,
   styles: [
     `
@@ -3162,6 +3172,7 @@ export class EventSetupComponent implements OnInit {
   isAddSpeakersModalOpen = false;
   isInformationModalOpen = false;
   isSponsorsModalOpen = false;
+  isSocialMediaModalOpen = false;
   editAboutContent = false;
   eventId: string = "";
   schedules: Schedule[] = [];
@@ -3865,6 +3876,18 @@ export class EventSetupComponent implements OnInit {
   deleteSponsor(id: string) {
     this.sponsorToDelete = id;
     this.isDeleteModalOpen = true;
+  }
+
+  openAddSocialMediaModal() {
+    this.isSocialMediaModalOpen = true;
+  }
+
+  closeSocialMediaModal() {
+    this.isSocialMediaModalOpen = false;
+  }
+
+  onSocialMediaSave(socialMediaData: any) {
+    console.log("Social media saved:", socialMediaData);
   }
 
   formatTime(timeString: string): string {
