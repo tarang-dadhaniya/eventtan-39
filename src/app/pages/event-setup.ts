@@ -1162,13 +1162,13 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                     (dragleave)="onDragLeaveSelected($event)"
                   >
                     <!-- Selected Feature Cards -->
-                    <div class="flex flex-wrap gap-6 w-full">
+                    <div class="flex flex-wrap gap-2 sm:gap-3 md:gap-4 lg:gap-6 w-full">
                       <div
                         *ngFor="let featureId of activeFeatures"
                         draggable="true"
                         (dragstart)="onDragStart($event, featureId)"
                         (dragend)="onDragEnd($event)"
-                        class="flex flex-col items-center gap-2 p-4 w-[120px] h-[120px] rounded border border-[#049AD0] shadow-[0_4px_15px_rgba(30,30,45,0.05)] bg-white transition-all hover:shadow-md cursor-move"
+                        class="flex flex-col items-center gap-1 sm:gap-2 p-3 sm:p-4 w-[90px] h-[90px] sm:w-[100px] sm:h-[100px] md:w-[110px] md:h-[110px] lg:w-[120px] lg:h-[120px] rounded border border-[#049AD0] shadow-[0_4px_15px_rgba(30,30,45,0.05)] bg-white transition-all hover:shadow-md cursor-move"
                       >
                         <div
                           class="relative w-full flex-1 flex items-center justify-center"
