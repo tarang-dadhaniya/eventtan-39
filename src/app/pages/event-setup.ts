@@ -4691,4 +4691,42 @@ export class EventSetupComponent implements OnInit {
     }
     return name.substring(0, 2).toUpperCase();
   }
+
+  // Web View methods
+  loadWebViews() {
+    this.webViews = this.webViewService.getWebViewsByEvent(this.eventId);
+  }
+
+  openWebViewModal() {
+    this.editModeWebView = false;
+    this.editingWebView = null;
+    this.isWebViewModalOpen = true;
+  }
+
+  closeWebViewModal() {
+    this.isWebViewModalOpen = false;
+    this.editModeWebView = false;
+    this.editingWebView = null;
+  }
+
+  onWebViewSave(webViewData: any) {
+    if (this.editModeWebView && this.editingWebView) {
+      this.webViewService.updateWebView(this.editingWebView.id, webViewData);
+    } else {
+      this.webViewService.addWebView(this.eventId, webViewData);
+    }
+    this.loadWebViews();
+    this.closeWebViewModal();
+  }
+
+  editWebView(webView: WebView) {
+    this.editModeWebView = true;
+    this.editingWebView = webView;
+    this.isWebViewModalOpen = true;
+  }
+
+  deleteWebView(id: string) {
+    this.webViewToDelete = id;
+    this.isDeleteModalOpen = true;
+  }
 }
